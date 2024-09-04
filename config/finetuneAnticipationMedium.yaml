@@ -1,0 +1,49 @@
+data:
+  train_urls:
+      - "/path/to/training/data"
+  validation_urls:
+      - "/path/to/validation/data"
+  tokenizer: "passthrough"
+  plaintext: True
+  vocab_size: 55028
+  enforce_eos: False
+model:
+  type: gpt2
+  hidden_dim: 1024
+  num_heads: 16
+  num_layers: 24
+  seq_len: 1024
+  scale_attn_by_inverse_layer_idx: true
+  embed_pdrop: 0.1
+  resid_pdrop: 0.1
+  gradient_checkpointing: true
+initialize_from_hf: stanford-crfm/music-medium-800k
+trainer:
+  mp: p=f32,c=bfloat16
+  model_axis_size: 1
+  per_device_parallelism: 16
+  num_train_steps: 2001
+  train_batch_size: 512
+  per_device_eval_parallelism: 1
+  # initialize_from: "/path/to/initialization"
+  # id: "run_id"
+  # wandb:
+  #   resume: true
+
+  checkpointer:
+    base_path: "/path/to/checkpoints"
+    save_interval: 30m
+    keep:
+      - every: 1000
+
+  axis_resources:
+    batch: "data"
+    vocab: "model"
+    mlp: "model"
+    heads: "model"
+  parameter_axis_resources:
+    embed: "data"
+optimizer:
+  learning_rate: 3E-5
+  weight_decay: 0.1
+  min_lr_ratio: 0.1
