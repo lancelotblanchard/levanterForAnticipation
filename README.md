@@ -1,5 +1,12 @@
 # Levanter
 
+**!!IMPORTANT INSTRUCTIONS FOR AWS!!**
+- `docker build -t dockerlevanter .`
+- `aws configure` (credentials in AWS Credentials)
+- `docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 508562973127.dkr.ecr.us-east-1.amazonaws.com`
+- `docker image tag dockerlevanter:latest 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
+- `docker push 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
+
 <a href="https://github.com/stanford-crfm/levanter/actions?query=branch%3Amain++">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/stanford-crfm/levanter/run_tests.yaml?branch=main">
 </a>
