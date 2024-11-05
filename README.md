@@ -7,6 +7,13 @@
 - `docker image tag dockerlevanter:latest 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
 - `docker push 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
 
+For a Colab version:
+<a target="_blank" href="https://colab.research.google.com/github/lancelotblanchard/levanterForAnticipation/blob/main/Levanter_on_Colab.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+
+<br />
+
 <a href="https://github.com/stanford-crfm/levanter/actions?query=branch%3Amain++">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/stanford-crfm/levanter/run_tests.yaml?branch=main">
 </a>
