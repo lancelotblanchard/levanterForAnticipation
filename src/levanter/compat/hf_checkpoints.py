@@ -187,7 +187,8 @@ class HFCheckpointConverter(Generic[LevConfig]):
 
         ref = _coerce_to_rr(reference_checkpoint) if reference_checkpoint is not None else None
         HfConfigClass = HFCheckpointConverter._infer_config_class(HfConfigClass, ref, trust_remote_code)
-        tokenizer = HFCheckpointConverter._infer_tokenizer(tokenizer, ref, trust_remote_code)
+        if tokenizer is not None:
+            tokenizer = HFCheckpointConverter._infer_tokenizer(tokenizer, ref, trust_remote_code)
 
         self.__default_init__(  # type: ignore
             LevConfigClass=LevConfigClass,
@@ -200,10 +201,12 @@ class HFCheckpointConverter(Generic[LevConfig]):
         )
 
     @staticmethod
-    def from_hf(model_name_or_path: Union[RepoRef, str], trust_remote_code: bool = False) -> "HFCheckpointConverter":
+    def from_hf(model_name_or_path: Union[RepoRef, str], trust_remote_code: bool = False, infer_tokenizer: bool = True) -> "HFCheckpointConverter":
         ref = _coerce_to_rr(model_name_or_path)
         config_class = HFCheckpointConverter._infer_config_class(None, ref, trust_remote_code)
-        tokenizer = HFCheckpointConverter._infer_tokenizer(None, ref, trust_remote_code)
+        tokenizer = None
+        if infer_tokenizer:
+            tokenizer = HFCheckpointConverter._infer_tokenizer(None, ref, trust_remote_code)
 
         # TODO: this is very hacky, we should add another registry or something
         # attempt to find the Levanter config class by checking the registry
