@@ -1,11 +1,26 @@
-# Levanter
+# Levanter for Anticipation
 
-**!!IMPORTANT INSTRUCTIONS FOR AWS!!**
+This is a fork of [stanford-crfm/levanter](https://github.com/stanford-crfm/levanter) that ensures complete support with [jthickstun/anticipation](https://github.com/jthickstun/anticipation). Both are amazing projects from [Stanford CRFM](https://crfm.stanford.edu/), but Levanter is much more frequently updated than anticipation, which resulted in changes breaking support for training Anticipatory Music Transformers. 
+
+## CHANGELOG
+
+- Commit [fbacf29](https://github.com/lancelotblanchard/levanterForAnticipation/commit/fbacf29dea73a72e0b8e6f6ee4cea572d27e1bbf): Remove need for tokenizer in `lora_lm.py` to enable LoRA training of Anticipatory Music Transformers.
+- Commits [5d250c8](https://github.com/lancelotblanchard/levanterForAnticipation/commit/5d250c841b566d185c3ae9c0a1d26e09a36aebcf), [ac9c068](https://github.com/lancelotblanchard/levanterForAnticipation/commit/ac9c06813cd351ac9d4b050c68c2aee50c958ff5): Add support for Google Colab in `Levanter_on_Colab.ipynb` (see [#Colab Support](#Colab-Support)).
+- Commits [25ea926](https://github.com/lancelotblanchard/levanterForAnticipation/commit/25ea926f95e671d02b7a61e0703dae9f23389a08), [c4c7563](https://github.com/lancelotblanchard/levanterForAnticipation/commit/c4c7563654d5a9bbcce07f3aa85af4bb0f595c9f): Add support for AWS Sagemaker, through a Docker container (see [#Running on AWS SageMaker](#Running-on-AWS-SageMaker)).
+- Commit [38d41aa](https://github.com/lancelotblanchard/levanterForAnticipation/commit/38d41aa7d379919330f75075efd32df770b24e44): Add template config files for finetuning and exporting to HF format (`config/finetuneAnticipation{Small,Medium}.yaml` and `config/exportAnticipation{Small,Medium}.yaml`).
+- Commit [4c3d353](https://github.com/lancelotblanchard/levanterForAnticipation/commit/4c3d353df24be9f81d2465a6e29ed1bdf63e572c): Implement support for `initialize_from` (from original commit [d9025fd](https://github.com/stanford-crfm/levanter/commit/d9025fd79177481e058a24b68df345e19fb463a1)), comment out vocabulary checks in tokenizer.
+
+- Fork from commit [aa79f40](https://github.com/stanford-crfm/levanter/commit/aa79f40d31b8d062ea829a6253c61489be3a4586).
+
+## Running on AWS SageMaker
+
 - `docker build -t dockerlevanter .`
 - `aws configure` (credentials in AWS Credentials)
 - `docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 508562973127.dkr.ecr.us-east-1.amazonaws.com`
 - `docker image tag dockerlevanter:latest 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
 - `docker push 508562973127.dkr.ecr.us-east-1.amazonaws.com/jordanai/levanter:latest`
+
+## Colab Support
 
 For a Colab version:
 <a target="_blank" href="https://colab.research.google.com/github/lancelotblanchard/levanterForAnticipation/blob/main/Levanter_on_Colab.ipynb">
@@ -13,6 +28,8 @@ For a Colab version:
 </a>
 
 <br />
+
+## Original README.md
 
 <a href="https://github.com/stanford-crfm/levanter/actions?query=branch%3Amain++">
     <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/stanford-crfm/levanter/run_tests.yaml?branch=main">
