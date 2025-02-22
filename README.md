@@ -4,7 +4,9 @@ This is a fork of [stanford-crfm/levanter](https://github.com/stanford-crfm/leva
 
 ## CHANGELOG
 
-- Commit [fbacf29](https://github.com/lancelotblanchard/levanterForAnticipation/commit/fbacf29dea73a72e0b8e6f6ee4cea572d27e1bbf): Remove need for tokenizer in `lora_lm.py` to enable LoRA training of Anticipatory Music Transformers.
+- Commit [2d630e1](https://github.com/lancelotblanchard/levanterForAnticipation/commit/2d630e1c28a2262584074f95fb71b913230bac08): Update Google Colab notebook.
+- Commit [b9ef8ac](https://github.com/lancelotblanchard/levanterForAnticipation/commit/b9ef8ac7988c7f42b160a1c8aaa5aa94928c5956): Add config file for LoRA
+- Commit [fbacf29, b9ef8ac](https://github.com/lancelotblanchard/levanterForAnticipation/commit/fbacf29dea73a72e0b8e6f6ee4cea572d27e1bbf): Remove need for tokenizer in `lora_lm.py` to enable LoRA training of Anticipatory Music Transformers. Add config file for LoRA.
 - Commits [5d250c8](https://github.com/lancelotblanchard/levanterForAnticipation/commit/5d250c841b566d185c3ae9c0a1d26e09a36aebcf), [ac9c068](https://github.com/lancelotblanchard/levanterForAnticipation/commit/ac9c06813cd351ac9d4b050c68c2aee50c958ff5): Add support for Google Colab in `Levanter_on_Colab.ipynb` (see [#Colab Support](#Colab-Support)).
 - Commits [25ea926](https://github.com/lancelotblanchard/levanterForAnticipation/commit/25ea926f95e671d02b7a61e0703dae9f23389a08), [c4c7563](https://github.com/lancelotblanchard/levanterForAnticipation/commit/c4c7563654d5a9bbcce07f3aa85af4bb0f595c9f): Add support for AWS Sagemaker, through a Docker container (see [#Running on AWS SageMaker](#Running-on-AWS-SageMaker)).
 - Commit [38d41aa](https://github.com/lancelotblanchard/levanterForAnticipation/commit/38d41aa7d379919330f75075efd32df770b24e44): Add template config files for finetuning and exporting to HF format (`config/finetuneAnticipation{Small,Medium}.yaml` and `config/exportAnticipation{Small,Medium}.yaml`).
